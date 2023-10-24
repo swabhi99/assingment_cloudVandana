@@ -1,0 +1,180 @@
+Create an array with the values (1, 2, 3, 4, 5, 6, 7) and shuffle it. in JAVA 
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class ShuffleUserInputArray {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the number of elements in the array: ");
+        int n = scanner.nextInt();
+
+        Integer[] originalArray = new Integer[n];
+
+        System.out.println("Enter the elements of the array: ");
+        for (int i = 0; i < n; i++) {
+            originalArray[i] = scanner.nextInt();
+        }
+
+        // Convert the array to a List for shuffling
+        List<Integer> list = Arrays.asList(originalArray);
+
+        // Shuffle the list
+        Collections.shuffle(list);
+
+        // Convert the shuffled list back to an array
+        Integer[] shuffledArray = list.toArray(new Integer[0]);
+
+        // Print the shuffled array
+        System.out.println("Shuffled Array: " + Arrays.toString(shuffledArray));
+
+        scanner.close();
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------
+2)Enter a Roman Number as input and convert it to an integer. (ex IX = 9) in java 
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class RomanToInteger {
+    public static int romanToInt(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+
+        // Create a HashMap to store the values of Roman numerals
+        HashMap<Character, Integer> romanValues = new HashMap<>();
+        romanValues.put('I', 1);
+        romanValues.put('V', 5);
+        romanValues.put('X', 10);
+        romanValues.put('L', 50);
+        romanValues.put('C', 100);
+        romanValues.put('D', 500);
+        romanValues.put('M', 1000);
+
+        int result = 0;
+        int prevValue = 0;
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int currentValue = romanValues.get(s.charAt(i));
+
+            if (currentValue < prevValue) {
+                result -= currentValue;
+            } else {
+                result += currentValue;
+            }
+
+            prevValue = currentValue;
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter a Roman numeral:");
+        String romanNumeral = scanner.nextLine().toUpperCase();
+
+        int integerEquivalent = romanToInt(romanNumeral);
+        System.out.println("Roman numeral " + romanNumeral + " is equivalent to " + integerEquivalent);
+
+        scanner.close();
+    }
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3)C. Check if the input is pangram or not. (Pangram is a sentence that contains all the alphabet
+from a-z) in java 
+
+     import java.util.HashSet;
+import java.util.Scanner;
+
+public class PangramChecker {
+    public static boolean isPangram(String input) {
+        // Convert the input string to lowercase to make it case-insensitive
+        input = input.toLowerCase();
+
+        // Create a HashSet to store the unique letters in the input string
+        HashSet<Character> uniqueLetters = new HashSet<>();
+
+        for (char c : input.toCharArray()) {
+            if (c >= 'a' && c <= 'z') {
+                uniqueLetters.add(c);
+            }
+        }
+
+        // Check if the HashSet size is 26 (the number of letters in the English alphabet)
+        return uniqueLetters.size() == 26;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter a sentence to check if it's a pangram:");
+        String input = scanner.nextLine();
+
+        boolean isPangram = isPangram(input);
+
+        if (isPangram) {
+            System.out.println("The input is a pangram.");
+        } else {
+            System.out.println("The input is not a pangram.");
+        }
+
+        scanner.close();
+    }
+}
+
+
+
+Javascript -------------------------------------------------------------------------------------------------------------------------------------------------
+1)A. Take a sentence as an input and reverse every word in that sentence.
+a. Example - This is a sunny day > shiT si a ynnus yad.
+
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function reverseWords(sentence) {
+  const words = sentence.split(' ');
+  const reversedWords = words.map(word => {
+    return word.split('').reverse().join('');
+  });
+  return reversedWords.join(' ');
+}
+
+rl.question('Enter a sentence: ', (inputSentence) => {
+  const reversedSentence = reverseWords(inputSentence);
+  console.log('Reversed sentence: ' + reversedSentence);
+  rl.close();
+});
+
+2)Perform sorting of an array in descending order.
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function sortArrayDescending(arr) {
+  return arr.sort((a, b) => b - a);
+}
+
+rl.question('Enter a list of numbers separated by spaces: ', (input) => {
+  const numbers = input.split(' ').map(Number);
+  const sortedArray = sortArrayDescending(numbers);
+
+  console.log('Sorted array in descending order: ' + sortedArray.join(' '));
+  rl.close();
+});
+
