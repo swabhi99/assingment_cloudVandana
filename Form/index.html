@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Survey Form</h1>
+      <form id="survey-form">
+        <div class="form-group">
+          <label for="first-name">First Name:</label>
+          <input type="text" id="first-name" required />
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name:</label>
+          <input type="text" id="last-name" required />
+        </div>
+        <div class="form-group">
+          <label for="date-of-birth">Date of Birth:</label>
+          <input type="date" id="date-of-birth" required />
+        </div>
+        <div class="form-group">
+          <label for="country">Country:</label>
+          <select id="country" required>
+            <option value="INDIA">INDIA</option>
+            <option value="Canada">Canada</option>
+            <option value="UK">UK</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Gender:</label>
+          <input type="checkbox" id="male" name="gender" value="Male" /> Male
+          <input type="checkbox" id="female" name="gender" value="Female" />
+          Female
+        </div>
+        <div class="form-group">
+          <label for="profession">Profession:</label>
+          <input type="text" id="profession" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" required />
+        </div>
+        <div class="form-group">
+          <label for="mobile">Mobile Number:</label>
+          <input type="tel" id="mobile" required />
+        </div>
+        <div class="button-group">
+          <button type="button" id="submit-button">Submit</button>
+          <button type="button" id="reset-button">Reset</button>
+        </div>
+      </form>
+    </div>
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close" id="close-popup">&times;</span>
+        <h2>Survey Form Submission</h2>
+        <div id="popup-data">
+          <!-- Submitted data will be displayed here -->
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
